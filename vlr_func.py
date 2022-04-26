@@ -52,7 +52,8 @@ game_id_player = []
 list_num_map = []
 url_num = 0
 
-# create all of our variables before starting the loop
+# using a for loop, loop through all of the urls
+# each iteration of the for loop goes to the next map
 for url in url_list:
 
     try:
@@ -78,7 +79,6 @@ for url in url_list:
     game_maps = len(soup.find_all('div', class_='vm-stats-game'))
 
 #############################################################################  
-    
     # looping through all 3 maps to find the player names in all 3 maps
     z=0
     while z < game_maps - 1:
@@ -304,3 +304,18 @@ player_game_df['Assist Defense'] = pd.to_numeric(player_game_df['Assist Defense'
 
 # drop any rows with null values
 player_game_df = player_game_df.dropna()
+
+
+#############################################################################
+# fill the db with the 
+
+# from sqlalchemy import create_engine
+# import psycopg2
+# import time
+
+# db_password = 'postgres'
+
+# db_string = f'postgresql://postgres:{db_password}@127.0.0.1:5432/vlr_knights'
+# engine = create_engine(db_string)
+    
+# player_game_df.to_sql(name='vlr_knights', con=engine, if_exists='replace')
